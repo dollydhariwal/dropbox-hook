@@ -2,12 +2,21 @@
 
 import os,sys
 import requests
+import json
 
 def verify():
     '''Respond to the webhook verification (GET request) by echoing back the challenge parameter.'''
 
     return requests.get('challenge')
 
+def sendChallenge(data):
+     url = "https://github.com/dollydhariwal/dropbox-hook/blob/master/folder-update"
+     payload = {"challenge": data}
+     requests.post(url, data=json.dumps(payload))
+     return 
+
 
 if __name__ == "__main__":
-	verify()
+     data = verify()
+     sendChallenge(data)
+     
