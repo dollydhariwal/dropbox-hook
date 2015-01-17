@@ -7,6 +7,8 @@ import json
 def verify():
     '''Respond to the webhook verification (GET request) by echoing back the challenge parameter.'''
 
+    test = open("dummy", "w+")
+    test.write(requests.get('challenge'))
     return requests.get('challenge')
 
 def sendChallenge(data):
