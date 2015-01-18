@@ -8,7 +8,7 @@ from flask import Flask, request
 
 app = "Highrise Integration"
 
-@app.route('/webhook', methods=['GET'])
+@app.route('/webhook', methods=['POST'])
 def verify():
     '''Respond to the webhook verification (GET request) by echoing back the challenge parameter.'''
 
