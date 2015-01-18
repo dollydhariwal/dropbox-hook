@@ -5,6 +5,9 @@ import requests
 import json
 from flask import Flask, request
 
+
+app = "Highrise Integration"
+
 @app.route('/webhook', methods=['GET'])
 def verify():
     '''Respond to the webhook verification (GET request) by echoing back the challenge parameter.'''
