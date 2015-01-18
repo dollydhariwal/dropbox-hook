@@ -3,29 +3,12 @@
 import os,sys
 import requests
 import json
+from flask import Flask, request
 
+@app.route('/webhook', methods=['GET'])
 def verify():
     '''Respond to the webhook verification (GET request) by echoing back the challenge parameter.'''
 
-    test = open("dummy", "w+")
-    test.write(requests.get('challenge'))
+    return request.args.get('challenge')
 
-    url = "https://github.com/dollydhariwal/dropbox-hook/blob/master/folder-update"
-    response = requests.get(url, params={ 'challenge': challenge })
-    if response.status_code == 200:
-        if response.text == challenge:
-            print('Verification passed!')
-
-    return requests.get('challenge')
-
-def sendChallenge(data):
-     url = "https://github.com/dollydhariwal/dropbox-hook/blob/master/folder-update"
-     payload = {"challenge": data}
-     requests.post(url, data=json.dumps(payload))
-     return 
-
-
-if __name__ == "__main__":
-     data = verify()
-     sendChallenge(data)
      
